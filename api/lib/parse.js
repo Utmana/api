@@ -13,7 +13,7 @@ parse.initialize(
 );
 
 module.exports = {
-  reminder: function(reminder, done){
+  remind: function(reminder, done){
 
     var query = new parse.Query(parse.Installation);
 
@@ -30,7 +30,7 @@ module.exports = {
       }
     });
   },
-  broadcast: function(user, data, done) {
+  broadcast: function(data, done) {
 
     var query = new parse.Query(parse.Installation);
 

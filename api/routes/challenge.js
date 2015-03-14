@@ -35,7 +35,7 @@ module.exports = {
     });
   }, 
   delete : function(req, res) {
-    db.remove({date: new Date(), host: req.host }, function(err){
+    db.remove({ _id : objectId(req.params.id) }, function(err){
       if (err) { throw err; }
       res.json(true);
     });

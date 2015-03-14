@@ -39,11 +39,7 @@ module.exports = {
           'sound': 'cheering.caf' // default ios sound.
         };
 
-        console.log(reminder);
-
-        var user = req.headers.token ? {id: req.headers.token} : null;
-
-        parse.reminder(reminder, function(err){
+        parse.remind(reminder, function(err){
           if (err){
             return res.json(500, err);
           }
