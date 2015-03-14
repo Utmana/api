@@ -13,15 +13,9 @@ parse.initialize(
 );
 
 module.exports = {
-  push: function(user, message, done) {
+  push: function(user, data, done) {
 
     var query = new parse.Query(parse.Installation);
-    var data = {
-        'alert': message,
-        'badge': 2,
-        'anotherObjectId': '', // extra data to send to the phone.
-        'sound': 'cheering.caf' // default ios sound.
-      };
 
     if (user){
       query.equalTo('user', {
