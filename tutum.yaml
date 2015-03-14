@@ -1,0 +1,27 @@
+
+cluster:
+  name: app
+  region: ams2 # digital ocean 
+  type: 512mb
+  nodes: 1
+
+services:
+- name: mongodb
+  image: mongodb
+  containers: 1
+
+- name: web
+  image: iteamdev/tutum-web
+  build: web
+  containers: 1
+  ports:
+    - guest: 80
+      host: 80
+      name: http
+      protocol: tcp
+      published: true
+  env:
+    - PORT: 80
+    - MONGO_URL: mongodb://mongodb/test
+  require: # Links. 
+    - mongodb

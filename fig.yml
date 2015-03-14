@@ -1,0 +1,19 @@
+nginx:
+  build: nginx
+  ports:
+    - 80:80
+  links:
+    - web
+web:
+  build: web
+  ports:
+    - 3000:3000
+  environment:
+    PORT: 3000
+    MONGO_URL: mongodb://mongodb
+  links:
+    - mongodb:mongodb
+mongodb:
+  image: dockerfile/mongodb
+  ports:
+    - 27017:27017

@@ -1,0 +1,16 @@
+image: node0.10
+
+script:
+  - npm install -g tutum-deploy
+  - td build
+  - td push
+
+notify:
+  slack:
+    team: iteamsolutions
+    channel: #nordic
+    username: drone.iteam.se
+    token: zUz2Gh9YzUz7iqR1Ksny5rXJ
+    on_started: false
+    on_failure: true
+    on_success: true
