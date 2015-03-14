@@ -19,7 +19,7 @@ module.exports = {
     });
   },
   post : function(req, res) {
-    var userchallenge = req.body;
+    var userchallenge = req.body || { acceptDate : new Date() };
     challengeDb.findOne({ _id: objectId(req.params.challengeId) }, function(err, challenge){
       if (err){ return res.json(500, err); }
       if (!challenge) { return res.json(404, 'challenge not found'); }
