@@ -27,6 +27,7 @@ module.exports = {
     }
 
     parse.Push.send({
+      'push_time': data.push_time,
       where: query,
       data: data
     }, {
