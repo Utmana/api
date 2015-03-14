@@ -2,14 +2,10 @@
 
 var express = require('express');
 var routes = require('./routes');
-var cors = require('express-cors');
+var cors = require('cors');
 var app = express();
 
-app.use(cors({
-  allowedOrigins: [
-    '*'
-  ]
-}));
+app.use(cors());
 
 routes.register(app);
 
