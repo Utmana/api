@@ -3,9 +3,9 @@ nginx:
   ports:
     - 80:80
   links:
-    - web
-web:
-  build: web
+    - api
+api:
+  build: api
   ports:
     - 3000:3000
   environment:

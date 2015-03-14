@@ -1,3 +1,3 @@
-docker build -t lb .
-docker tag -f lb tutum.co/iteamdev/tutum-lb
-docker push tutum.co/iteamdev/tutum-lb
+docker build -t utmana-lb .
+docker tag -f utmana-lb tutum.co/iteamdev/utmana-lb
+docker push tutum.co/iteamdev/utmana-lb
