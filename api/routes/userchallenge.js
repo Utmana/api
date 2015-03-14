@@ -43,7 +43,7 @@ module.exports = {
 
         var user = req.headers.token ? {id: req.headers.token} : null;
 
-        parse.push(user, reminder, function(err){
+        parse.reminder(reminder, function(err){
           if (err){
             return res.json(500, err);
           }

@@ -23,12 +23,12 @@ module.exports = {
 
       var alert = {
         'alert': challenge.summary,
-        'badge': 2,
-        'anotherObjectId': '', // extra data to send to the phone.
+        'badge': 'Increment',
+        'anotherObjectId': doc._id, // extra data to send to the phone.
         'sound': 'cheering.caf' // default ios sound.
       };
 
-      parse.push(null /* userid */, alert, function(err){
+      parse.broadcast(alert, function(err){
         if (err) { throw err; }
         res.json(doc);
       });

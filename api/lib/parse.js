@@ -13,21 +13,28 @@ parse.initialize(
 );
 
 module.exports = {
-  push: function(user, data, done) {
+  reminder: function(reminder, done){
 
     var query = new parse.Query(parse.Installation);
 
-    if (user){
-      query.equalTo('user', {
-        'objectId': user.id,
-        'className': '_User',
-        '__type': 'Pointer'
-      }); // me.
-      // query.equalTo('deviceType', 'ios');
-    }
+    parse.Push.send({
+      'push_time': reminder.push_time,
+      where: query,
+      data: reminder
+    }, {
+      success: function() {
+        return done && done();
+      },
+      error: function(err) {
+        return done && done(err);
+      }
+    });
+  },
+  broadcast: function(user, data, done) {
+
+    var query = new parse.Query(parse.Installation);
 
     parse.Push.send({
-      'push_time': data.push_time,
       where: query,
       data: data
     }, {
