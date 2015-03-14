@@ -10,9 +10,9 @@ exports.register = function(app){
    * User 
    */
   app.get('/users', user.list);
-  app.get('/user/:id', user.get);
-  app.post('/user', user.post);
-  app.delete('/user', user.delete);
+  app.get('/users/:id', user.get);
+  app.post('/users', user.post);
+  app.delete('/users', user.delete);
 
 
 
@@ -20,17 +20,17 @@ exports.register = function(app){
    * team 
    */
   app.get('/teams', team.list);
-  app.get('/team/:id', team.get);
-  app.post('/team', team.post);
-  app.delete('/team', team.delete);
+  app.get('/teams/:id', team.get);
+  app.post('/teams', team.post);
+  app.delete('/teams', team.delete);
 
 
   /**
    * challenge 
    */
   app.get('/challenges', challenge.list);
-  app.get('/challenge/:id', challenge.get);
-  app.post('/challenge', challenge.post);
-  app.delete('/challenge', challenge.delete);
+  app.get('/challenges/:id', challenge.get);
+  app.post('/challenges', challenge.post);
+  app.delete('/challenges', challenge.delete);
 
 };

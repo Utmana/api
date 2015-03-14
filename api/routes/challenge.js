@@ -1,5 +1,6 @@
 'use strict';
 var db = require('../lib/db').challenge;
+var parse = require('../lib/parse');
 
 module.exports = {
   list : function(req, res) {
@@ -15,11 +16,19 @@ module.exports = {
     });
   },
   post : function(req, res) {
-    db.save({date: new Date(), host: req.host }, function(err, doc){
+    var challenge = req.body;
+    console.log('challenge', challenge);
+    db.save(challenge, function(err, doc){
       if (err){
         return res.json(500, err);
       }
-      res.json(doc);
+
+      parse.push(null /* userid */, challenge.summary, function(err){
+        if (err){
+          return res.json(500, err);
+        }
+        res.json(doc);
+      });
     });
   }, 
   delete : function(req, res) {
