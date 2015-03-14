@@ -1,16 +1,17 @@
 'use strict';
 var db = require('../lib/db').challenge;
 var parse = require('../lib/parse');
+var objectId = require('../lib/db').objectId;
 
 module.exports = {
   list : function(req, res) {
-    db.find(req.query.id ? { id: req } : {}, function(err, docs){
+    db.find({}, function(err, docs){
       if (err) { throw err; }
       res.json(docs); 
     });
   },
   get : function(req, res) {
-    db.find(req.query.id ? { id: req } : {}, function(err, docs){
+    db.findOne({ _id: objectId(req.params.id) }, function(err, docs){
       if (err) { throw err; }
       res.json(docs); 
     });

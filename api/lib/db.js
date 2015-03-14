@@ -5,5 +5,5 @@ module.exports = {
   team: db.collection('team'),
   user: db.collection('user'),
   challenge: db.collection('challenge'),
-  userChallenge: db.collection('userChallenge'),
+  userchallenge: db.collection('userchallenge'),
 };

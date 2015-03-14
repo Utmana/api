@@ -1,5 +1,6 @@
 'use strict';
 var db = require('../lib/db').user;
+var objectId = require('../lib/db').objectId;
 
 module.exports = {
   list : function(req, res) {
@@ -9,7 +10,7 @@ module.exports = {
     });
   },
   get : function(req, res) {
-    db.find(req.query.id ? { id: req } : {}, function(err, docs){
+    db.findOne({ _id: objectId(req.params.id) }, function(err, docs){
       if (err) { return res.json(500, err); }
       res.json(docs); 
     });

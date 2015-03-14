@@ -13,7 +13,7 @@ module.exports = {
     });
   },
   get : function(req, res) {
-    userchallengeDb.find(req.query.id ? { id: req } : {}, function(err, docs){
+    userchallengeDb.findOne({ _id: objectId(req.params.id) }, function(err, docs){
       if (err) { return res.json(500, err); }
       res.json(docs); 
     });
