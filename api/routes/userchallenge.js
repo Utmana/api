@@ -35,7 +35,8 @@ module.exports = {
           'alert': challenge.summary,
           'push_time': new Date(moment().add(challenge.reminderMinutes || 1, 'm').valueOf()),
           'badge': 'Increment',
-          'anotherObjectId': challenge._id, // extra data to send to the phone.
+          'cid': challenge._id, // extra data to send to the phone.
+          'ucid': doc._id, // extra data to send to the phone.
           'sound': 'cheering.caf' // default ios sound.
         };
 

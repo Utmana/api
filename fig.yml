@@ -4,6 +4,9 @@ nginx:
     - 80:80
   links:
     - api
+    - app
+app:
+  build: ../app
 api:
   build: api
   ports:

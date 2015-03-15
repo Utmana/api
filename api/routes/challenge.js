@@ -24,7 +24,7 @@ module.exports = {
       var alert = {
         'alert': challenge.summary,
         'badge': 'Increment',
-        'anotherObjectId': doc._id, // extra data to send to the phone.
+        'cid': doc._id, // extra data to send to the phone.
         'sound': 'cheering.caf' // default ios sound.
       };
 
