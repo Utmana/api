@@ -1,3 +1,6 @@
 sut:
   build: api
   command: npm test
+
+nginx:
+  build: nginx
