@@ -21,7 +21,7 @@ module.exports = {
   finished : function(req, res){
     userchallengeDb.findOne({ userId: req.headers.userId, 'challenge._id': objectId(req.params.challengeId) }, function(err, userchallenge){
       if (err){ return res.json(500, err); }
-      if (!req.headers.userId) { return res.json(500, 'userId must be set in headers'); }
+      if (!req.headers.userId) { return res.status(500).json('userId must be set in headers'); }
       if (!userchallenge) { return res.json(404, 'userchallenge not found'); }
       userchallenge.finished = new Date();
       userchallengeDb.save(userchallenge, function(err, doc){
@@ -49,7 +49,7 @@ module.exports = {
     var userchallenge = req.body || {};
     challengeDb.findOne({ _id: objectId(req.params.challengeId) }, function(err, challenge){
       if (err){ return res.json(500, err); }
-      if (!req.headers.userId) { return res.json(500, 'userId must be set in headers'); }
+      if (!req.headers.userId) { return res.status(500).json('userId must be set in headers'); }
       if (!challenge) { return res.json(404, 'challenge not found'); }
 
       userchallenge.acceptDate = new Date();
