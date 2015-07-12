@@ -30,6 +30,7 @@ exports.register = function(app){
   app.get('/challenges/:id', challenge.get);
   app.post('/challenges', challenge.post);
   app.post('/challenges/:challengeId/accept', userchallenge.accept);
+  app.post('/challenges/:challengeId/finished', userchallenge.finished);
   app.delete('/challenges/:id', challenge.delete);
 
 };
