@@ -5,7 +5,7 @@ var objectId = require('../lib/db').objectId;
 
 module.exports = {
   list : function(req, res) {
-    db.find({}, function(err, docs){
+    db.find({}).sort( { acceptedCount: -1 }, function(err, docs){
       if (err) { throw err; }
       res.json(docs); 
     });
