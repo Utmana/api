@@ -14,9 +14,11 @@
   },
   "devDependencies": {
     "mocha" : "*",
-    "chai" : "*"
+    "chai" : "*",
+    "nodemon" : "*"
   },
   "scripts": {
+    "start": "nodemon index.js",
     "test": "./node_modules/.bin/mocha test -R spec"
   },
   "author": "",

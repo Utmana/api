@@ -18,7 +18,33 @@ module.exports = {
       res.json(docs); 
     });
   },
-  post : function(req, res) {
+  finished : function(req, res){
+    userchallengeDb.findOne({ userId: req.headers.userId, 'challenge._id': objectId(req.params.challengeId) }, function(err, userchallenge){
+      if (err){ return res.json(500, err); }
+      if (!userchallenge) { return res.json(404, 'userchallenge not found'); }
+      userchallenge.finished = new Date();
+      userchallengeDb.save(userchallenge, function(err, doc){
+        if (err){
+          return res.json(500, err);
+        }
+        challengeDb.update({ _id: objectId(req.params.challengeId) }, {$inc:'finishedCount'});
+
+        var finished = {
+          'alert': 'Utmaning avklarad: ' + userchallenge.challenge.summary,
+          'cid': userchallenge._id, // extra data to send to the phone.
+          'sound': 'cheering.caf' // default ios sound.
+        };
+
+        parse.broadcast(finished, function(err){
+          if (err){
+            return res.json(500, err);
+          }
+          res.json(doc);
+        });
+      });
+    });
+  },
+  accept : function(req, res) {
     var userchallenge = req.body || { acceptDate : new Date() };
     challengeDb.findOne({ _id: objectId(req.params.challengeId) }, function(err, challenge){
       if (err){ return res.json(500, err); }
@@ -30,6 +56,8 @@ module.exports = {
         }
 
         userchallenge.challenge = challenge;
+
+        challenge.update({$inc:'acceptedCount'});
 
         var reminder = {
           'alert': challenge.summary,
