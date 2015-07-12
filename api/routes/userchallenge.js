@@ -32,7 +32,7 @@ module.exports = {
         challengeDb.update({ _id: objectId(req.params.challengeId) }, { $inc: { 'finishedCount':1 } });
 
         var finished = {
-          'alert': 'Utmaning avklarad: ' + userchallenge.challenge.summary,
+          'alert': 'Utmaning avklarad: ' + userchallenge.challenge.title,
           'cid': userchallenge._id, // extra data to send to the phone.
           'sound': 'cheering.caf' // default ios sound.
         };
@@ -65,7 +65,7 @@ module.exports = {
         challengeDb.update({ _id: objectId(req.params.challengeId) }, { $inc: { 'acceptedCount':1 } });
 
         var reminder = {
-          'alert': challenge.summary,
+          'alert': challenge.title,
           'push_time': new Date(moment().add(challenge.reminderMinutes || 1, 'm').valueOf()),
           'badge': 'Increment',
           'cid': challenge._id, // extra data to send to the phone.
