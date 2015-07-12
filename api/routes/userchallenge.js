@@ -28,7 +28,8 @@ module.exports = {
         if (err){
           return res.json(500, err);
         }
-        challengeDb.update({ _id: objectId(req.params.challengeId) }, { $inc:'finishedCount' });
+
+        challengeDb.update({ _id: objectId(req.params.challengeId) }, { $inc: { 'finishedCount':1 } });
 
         var finished = {
           'alert': 'Utmaning avklarad: ' + userchallenge.challenge.summary,
@@ -61,7 +62,7 @@ module.exports = {
           return res.json(500, err);
         }
 
-        challengeDb.update({ _id: objectId(req.params.challengeId) }, { $inc:'acceptedCount' });
+        challengeDb.update({ _id: objectId(req.params.challengeId) }, { $inc: { 'acceptedCount':1 } });
 
         var reminder = {
           'alert': challenge.summary,
