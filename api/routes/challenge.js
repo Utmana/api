@@ -11,9 +11,9 @@ module.exports = {
     });
   },
   get : function(req, res) {
-    db.findOne({ _id: objectId(req.params.id) }, function(err, docs){
+    db.findOne({ _id: objectId(req.params.id) }, function(err, doc){
       if (err) { throw err; }
-      res.json(docs); 
+      res.json(doc); 
     });
   },
   post : function(req, res) {

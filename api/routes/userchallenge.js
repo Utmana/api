@@ -12,10 +12,11 @@ module.exports = {
       res.json(docs); 
     });
   },
-  get : function(req, res) {
-    userchallengeDb.findOne({ _id: objectId(req.params.id) }, function(err, docs){
+  me : function(req, res) {
+    userchallengeDb.findOne({ userId: req.headers['x-user-id'], 'challenge._id': objectId(req.params.challengeId) }, function(err, userchallenge){
       if (err) { return res.json(500, err); }
-      res.json(docs); 
+      if (!userchallenge) { return res.json(404, 'userchallenge not found'); }
+      res.json(userchallenge); 
     });
   },
   finished : function(req, res){
