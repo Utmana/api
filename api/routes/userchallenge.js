@@ -6,10 +6,10 @@ var parse = require('../lib/parse');
 var moment = require('moment');
 
 module.exports = {
-  list : function(req, res) {
-    userchallengeDb.find(req.query.id ? { id: req } : {}, function(err, docs){
+  all : function(req, res) {
+    userchallengeDb.find({'challenge._id': objectId(req.params.challengeId) }, function(err, docs){
       if (err) { return res.json(500, err); }
-      res.json(docs); 
+      res.json(docs);
     });
   },
   me : function(req, res) {
