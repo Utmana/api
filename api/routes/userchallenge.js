@@ -56,7 +56,7 @@ module.exports = {
 
       userchallenge.acceptDate = new Date();
       userchallenge.challenge = challenge;
-      userchallenge.userId = req.headers.userId;
+      userchallenge.userId = req.headers['x-user-id'];
 
       userchallengeDb.save(userchallenge, function(err, doc){
         if (err){
