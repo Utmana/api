@@ -23,9 +23,11 @@ module.exports = {
       data: reminder
     }, {
       success: function() {
+        console.log('Sent reminder', reminder);
         return done && done();
       },
       error: function(err) {
+        console.log('Error sending reminder', reminder, err);
         return done && done(err);
       }
     });
@@ -39,9 +41,11 @@ module.exports = {
       data: data
     }, {
       success: function() {
+        console.log('Sent broadcast', data);
         return done && done();
       },
       error: function(err) {
+        console.log('Error sending broadcast', data, err);
         return done && done(err);
       }
     });
