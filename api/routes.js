@@ -29,10 +29,16 @@ exports.register = function(app){
   app.get('/challenges', challenge.list);
   app.get('/challenges/:id', challenge.get);
   app.post('/challenges', challenge.post);
+  app.delete('/challenges/:id', challenge.delete);
+
+  /**
+   * user challenges
+   */
   app.get('/challenges/:challengeId/all', userchallenge.all);
   app.get('/challenges/:challengeId/me', userchallenge.me);
   app.post('/challenges/:challengeId/accept', userchallenge.accept);
   app.post('/challenges/:challengeId/finished', userchallenge.finished);
-  app.delete('/challenges/:id', challenge.delete);
+  app.get('/users/:id/challenges', userchallenge.mine);
+  app.get('/users/me/challenges', userchallenge.mine);
 
 };

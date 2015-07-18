@@ -22,7 +22,7 @@ module.exports = {
       if (err) { throw err; }
 
       var alert = {
-        'alert': challenge.summary,
+        'alert': 'Ny utmaning: ' + challenge.title,
         'badge': 'Increment',
         'cid': doc._id, // extra data to send to the phone.
         'sound': 'cheering.caf' // default ios sound.
