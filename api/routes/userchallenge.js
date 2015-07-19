@@ -40,7 +40,8 @@ module.exports = {
 
         var finished = {
           'alert': 'Utmaning avklarad: ' + userchallenge.challenge.title,
-          'cid': userchallenge._id, // extra data to send to the phone.
+          'cid': userchallenge.challenge._id, // extra data to send to the phone.
+          'ucid': userchallenge._id, // extra data to send to the phone.
           'sound': 'cheering.caf' // default ios sound.
         };
 
