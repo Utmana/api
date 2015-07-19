@@ -36,8 +36,6 @@ module.exports = {
           return res.json(500, err);
         }
 
-        challengeDb.update({ _id: objectId(req.params.challengeId) }, { $inc: { 'finishedCount':1 } });
-
         var finished = {
           'alert': 'Utmaning avklarad: ' + userchallenge.challenge.title,
           'cid': userchallenge.challenge._id,
@@ -49,7 +47,9 @@ module.exports = {
           if (err){
             return res.json(500, err);
           }
-          res.json(doc);
+          challengeDb.update({ _id: objectId(req.params.challengeId) }, { $inc: { 'finishedCount':1 } }, function(){
+            res.json(doc);
+          });
         });
       });
     });
@@ -70,7 +70,6 @@ module.exports = {
           return res.json(500, err);
         }
 
-        challengeDb.update({ _id: objectId(req.params.challengeId) }, { $inc: { 'acceptedCount':1 } });
 
         var reminder = {
           'alert': challenge.title,
@@ -85,7 +84,9 @@ module.exports = {
           if (err){
             return res.json(500, err);
           }
-          res.json(doc);
+          challengeDb.update({ _id: objectId(req.params.challengeId) }, { $inc: { 'acceptedCount':1 } }, function(){
+            res.json(doc);
+          });
         });
       });
     });
