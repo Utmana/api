@@ -77,6 +77,7 @@ module.exports = {
           'badge': 'Increment',
           'cid': challenge._id, // extra data to send to the phone.
           'ucid': doc._id, // extra data to send to the phone.
+          'userId': userchallenge.userId,
           'sound': 'cheering.caf' // default ios sound.
         };
 

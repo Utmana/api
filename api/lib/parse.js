@@ -17,6 +17,10 @@ module.exports = {
 
     var query = new parse.Query(parse.Installation);
 
+    if (reminder.userId){
+      query.equalTo('channels', 'uc_' + reminder.userId);
+    }
+
     parse.Push.send({
       'push_time': reminder.push_time,
       where: query,
